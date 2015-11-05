@@ -79,7 +79,9 @@ body {
     }
 }
 #sortable{
-    height: 150px;
+    height: 200px;
+    max-height: 300px;
+    overflow: auto;
 }
 .elem{
     float: left;
@@ -93,7 +95,7 @@ body {
 .pot {
     margin-bottom: 0px;
     border: 1px solid #C1BEBE;
-    height: 100px;
+    height: 200px;
 }
 .pot .elem{
     width: 100%;
