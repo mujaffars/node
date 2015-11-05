@@ -79,9 +79,10 @@ body {
     }
 }
 #sortable{
-    height: 200px;
-    max-height: 300px;
+    min-height: 300px;
     overflow: auto;
+    margin-bottom: 5px;
+    border: 1px solid #AFA9A9;
 }
 .elem{
     float: left;
@@ -93,10 +94,22 @@ body {
     /*width: 49%;*/
 }
 .pot {
+    padding-top: 8px !important;
     margin-bottom: 0px;
     border: 1px solid #C1BEBE;
     height: 200px;
 }
 .pot .elem{
     width: 100%;
+}
+.btnParent{
+    text-align: center;
+}
+.potparent{
+    margin-top: 5px;
+}
+.potHeading{
+    height: 20px; background-color: grey;
+    margin-bottom: 5px;
+    color: #fff;
 }
