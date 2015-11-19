@@ -36,15 +36,6 @@
         <title>Hello World</title>
     </head>
     <body>
-        <!--        <div class="app">
-                    <h1>PhoneGap</h1>
-                    <div id="deviceready" class="blink">
-                        <h3>Header</h3>
-                        <h2>h2</h2>
-                        <p class="event listening">Connecting to Device</p>
-                        <p class="event received">Device is Ready</p>
-                    </div>
-                </div>-->
         <div class="container">
 		   <div class="header clearfix">
 				<nav>
@@ -67,15 +58,9 @@
 					<button id="btnGuess" type="button" class="btn btn-lg btn-primary">Guess</button>
 				</div>
 				<div id="sortable" class="jumbotron connectedSortable">
-					<!--<div class="elem btn btn-lg btn-primary">living in water</div>
-					<div class="elem btn btn-lg btn-success">craniate animals</div>
-					<div class="elem btn btn-lg btn-info">limbs</div>
-					<div class="elem btn btn-lg btn-warning">mammal</div>
-					<div class="elem btn btn-lg btn-danger">aquatic environment</div> 
-					<div class="elem btn btn-lg btn-primary">gills</div>
-					<div class="elem btn btn-lg btn-warning">herbivorous</div>
-					<div class="elem btn btn-lg btn-info">caudal fin</div>
-					<div class="elem btn btn-lg btn-warning">jaws</div>-->
+                                    <table id="tblContainer">
+                                        
+                                    </table>
 				</div>
 			</div>
 			<!-- End Page Level list -->
@@ -91,9 +76,11 @@
         <script src="js/jquery-ui.js"></script>
         <script src="js/jquery.ui.touch-punch.min.js"></script>
         <script src="js/jquery.toaster.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <!--<script type="text/javascript" src="js/index.js"></script>-->
+        <script type="text/javascript" src="js/index_1.js"></script>
         <script type="text/javascript" src="js/pouchdb-5.1.0.min.js"></script>
+        <script type="text/javascript" src="js/pouchdb.upsert.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>

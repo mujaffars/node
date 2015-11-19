@@ -86,9 +86,11 @@ body {
 }
 .elem{
     float: left;
-    width: 50%;
+    width: 20%;
     cursor: pointer;
     border: 1px solid #C1BEBE;
+    height: 70px;
+    margin: 0 2% 5px 0;
 }
 .col-xs-6{
     /*width: 49%;*/
@@ -115,4 +117,7 @@ body {
 }
 #btnGuess{
 	margin: 5px 0;
+}
+.thumbnail{
+    border-radius: 0px;
 }
