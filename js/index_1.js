@@ -54,18 +54,26 @@ var gameAnswer = [];
 var usedItems = [];
 var complexityCount = 0;
 
+var puzzle = {};
+
 gameContent[1] = {0: 'living in water', 1: 'craniate animals', 2: 'limbs', 3: 'mammal', 4: 'aquatic environment', 5: 'gills', 6: 'herbivorous', 7: 'caudal fin', 8: 'jaws'};
 gameContent[2] = {0: 'waves', 1: 'coasts', 2: 'fishing', 3: 'swimming', 4: 'diving', 5: 'surfing', 6: 'sailing', 7: 'river'};
 gameContent[3] = {0: 'standing water', 1: 'shallow water', 2: 'natural process (formation)', 3: 'water-lilies', 4: 'production of fish (usage)'};
 gameContent[4] = {0: 'bloom', 1: 'beautify environment (usage)', 2: 'pollen', 3: 'plant + bueaty (defination)', 4: 'pollination', 5: 'cultivate (usage)', 6: 'wear (usage)', 7: 'nectar'};
 gameContent[5] = {0: 'flowering plant (part of)', 1: 'disseminate seeds', 2: 'source of food', 3: 'agricultural output', 4: 'fleshy (property)', 5: 'edible'};
-
 gameContent[6] = {0: 'web', 1: 'spider', 2: 'spider+man (formation)', 3: 'superhuman', 4: 'wall climb (property)', 5: 'peter', 6: '6th sence', 7: 'photographer'};
 gameContent[7] = {0: 'tony', 1: 'jarvis', 2: 'iron+man (formation)', 3: 'superhuman', 4: 'Stark Industries', 5: 'War Machine'};
-gameContent[8] = {0: 'circular shield', 1: 'Tesseract', 2: 'super-soldier', 3: 'superhuman', 4: 'Rogers', 5: 'Peggy Carter'};
-
+gameContent[8] = {0: 'circular shield', 1: 'lab experiment', 2: 'super-soldier', 3: 'superhuman', 4: 'Rogers', 5: 'Peggy Carter'};
 gameAnswer = ['', 'fish', 'sea', 'pond', 'flower', 'fruit', 'spider-man', 'iron-man', 'Captain America'];
 
+puzzle[1] = {
+    0: {
+        prop: 'living in water'
+    },
+    1: {
+        prop: 'coasts'
+    }
+}
 var contentCnt = 0;
 $.each(gameContent, function (index, val) {
     contentCnt++;
@@ -83,24 +91,55 @@ $(function () {
 });
 
 function startGame() {
-    var db = new PouchDB('kittens');
 
-    db.upsert('mittenss', function (doc) {
-        doc.levels[1] = {
-            1: {'key': 'first', 'info': ''},
-            2: {'key': 'second', 'info': 'relative'}
-        }
-        //doc.levels[2][2].key = 'trello 0222';
-        return doc;
-    }).then(function (res) {
-        // success, res is {rev: '1-xxx', updated: true}
-        db.get('mittenss').then(function (doc) {
-            console.log(doc);
-        });
+    //createDb('alchemyss');
+//    var db = new PouchDB('alchemy');
+    var db = getDb('alche');
+    //destroyDb(db);
+
+    getDoc(db, 'doc1');
+
+    // Insert sometinging id doc
+    //insertObject(db, 'doc1', 12)
+
+    db.compact().then(function (result) {
+        // handle result
     }).catch(function (err) {
-        // error
+        console.log(err);
+    });
+    
+    db.get('doc1').then(function (doc) {
+        console.log(doc);
+    }).catch(function (err) {
+        console.log(err);
     });
 
+//    db.put({
+//        _id: 'mittenss',
+//        _rev: doc._rev,
+//        levels: {
+//            2: {
+//                2: {'key': 'trello 0000', 'info': 'usage'}
+//            }
+//        }
+//    });
+
+//    db.upsert('mittenss', function (doc) {
+//        doc.levels[1] = {
+//            1: {'key': 'first', 'info': ''},
+//            2: {'key': 'second', 'info': 'relative'}
+//        }
+//        //doc.levels[2][2].key = 'trello 0222';
+//        return doc;
+//    }).then(function (res) {
+//        // success, res is {rev: '1-xxx', updated: true}
+//        db.get('mittenss').then(function (doc) {
+//            console.log(doc);
+//        });
+//    }).catch(function (err) {
+//        // error
+//    });
+//
 //    db.get('mittenss').then(function (doc) {
 //        return db.put({
 //            _id: 'mittenss',
