@@ -92,10 +92,12 @@ $(function() {
 
     //document.addEventListener("deviceready", onDeviceReady, false);
     alert('In the domready');
+    adSetter();
     startGame();
 });
 
 function adSetter() {
+    alert('in the adsetter');
     alert(navigator.userAgent);
 
     // select the right Ad Id according to platform
