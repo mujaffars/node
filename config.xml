@@ -51,6 +51,8 @@
     <!-- Plugins -->
 
     <!-- Core plugins -->
+    <gap:plugin name="cordova-plugin-admobpro" source="npm" />
+    
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
@@ -136,6 +138,6 @@
         <allow-intent href="itms-apps:*" />
     </platform>
 
-    <plugin name="cordova-plugin-admobpro" />
+    <!--<plugin name="cordova-plugin-admobpro" />-->
     
 </widget>
