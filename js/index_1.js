@@ -33,7 +33,11 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        alert('Device is ready');
+        adSetter();
         app.receivedEvent('deviceready');
+        
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -86,17 +90,12 @@ $(function() {
         connectWith: ".connectedSortable"
     }).disableSelection();
 
-    document.addEventListener("deviceready", onDeviceReady, false);
-
+    //document.addEventListener("deviceready", onDeviceReady, false);
+    alert('In the domready');
     startGame();
 });
 
-function onDeviceReady() {
-    alert('Device is ready');
-    adSetter();
-}
-
-function adSetter(){
+function adSetter() {
     alert(navigator.userAgent);
 
     // select the right Ad Id according to platform
@@ -114,7 +113,7 @@ function adSetter(){
             adId: admobid.banner,
             position: AdMob.AD_POSITION.TOP_CENTER,
             autoShow: true});
-    
+
 }
 
 function startGame() {
