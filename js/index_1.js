@@ -18,25 +18,25 @@
  */
 var app = {
     // Application Constructor
-    initialize: function () {
+    initialize: function() {
         this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function () {
+    bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function () {
+    onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
-    receivedEvent: function (id) {
+    receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
@@ -75,20 +75,47 @@ puzzle[1] = {
     }
 }
 var contentCnt = 0;
-$.each(gameContent, function (index, val) {
+$.each(gameContent, function(index, val) {
     contentCnt++;
 })
 
 
-$(function () {
+$(function() {
+
     $("#sortable, #sortable1").sortable({
         connectWith: ".connectedSortable"
     }).disableSelection();
 
-    //document.addEventListener("deviceready", onDeviceReady, false);
+    document.addEventListener("deviceready", onDeviceReady, false);
 
     startGame();
 });
+
+function onDeviceReady() {
+    alert('Device is ready');
+    adSetter();
+}
+
+function adSetter(){
+    alert(navigator.userAgent);
+
+    // select the right Ad Id according to platform
+    var admobid = {};
+    if (/(android)/i.test(navigator.userAgent)) { // for android & amazon-fireos
+        admobid = {
+            banner: 'ca-app-pub-3868593263837372/8649306643', // or DFP format "/6253334/dfp_example_ad"
+            interstitial: 'ca-app-pub-3868593263837372/4224486649'
+        };
+    }
+
+    // it will display smart banner at top center, using the default options
+    if (AdMob)
+        AdMob.createBanner({
+            adId: admobid.banner,
+            position: AdMob.AD_POSITION.TOP_CENTER,
+            autoShow: true});
+    
+}
 
 function startGame() {
 
@@ -102,15 +129,15 @@ function startGame() {
     // Insert sometinging id doc
     //insertObject(db, 'doc1', 12)
 
-    db.compact().then(function (result) {
+    db.compact().then(function(result) {
         // handle result
-    }).catch(function (err) {
+    }). catch (function(err) {
         console.log(err);
     });
-    
-    db.get('doc1').then(function (doc) {
+
+    db.get('doc1').then(function(doc) {
         console.log(doc);
-    }).catch(function (err) {
+    }). catch (function(err) {
         console.log(err);
     });
 
@@ -182,7 +209,7 @@ function startGame() {
     var contentKey = Math.floor(Math.random() * contentCnt) + 1;
     gameQueId = contentKey;
     var propCnt = -1;
-    $.each(gameContent[contentKey], function (index, val) {
+    $.each(gameContent[contentKey], function(index, val) {
         propCnt++;
     })
 
@@ -209,7 +236,7 @@ function generateRandomNo(usedItems, start, stop) {
 
         var found = false;
 
-        $.each(usedItems, function (index, val) {
+        $.each(usedItems, function(index, val) {
             if (val == randomKey) {
                 generateRandomNo(usedItems, start, stop);
             }
@@ -230,7 +257,7 @@ function addComplexity(gameQueId) {
                 addComplexity(gameQueId);
             } else {
                 var propCnt = -1;
-                $.each(gameContent[contentKey], function (index, val) {
+                $.each(gameContent[contentKey], function(index, val) {
                     propCnt++;
                 })
 
@@ -243,15 +270,15 @@ function addComplexity(gameQueId) {
 
 }
 
-$('#btnGuess').click(function () {
+$('#btnGuess').click(function() {
     //$('#sortable1).
     var isCorrect = true;
 
     if ($("#sortable1").find(".btn").length === 4) {
-        $("#sortable1").find(".btn").each(function () {
+        $("#sortable1").find(".btn").each(function() {
             var ansText = $(this).text();
             var ansValid = false;
-            $.each(gameContent[gameQueId], function (index, val) {
+            $.each(gameContent[gameQueId], function(index, val) {
                 if (ansText === val) {
                     ansValid = true;
                 }
