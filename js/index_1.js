@@ -61,6 +61,8 @@ $(function() {
     }).disableSelection();
     
     alert("inside dom");
+    
+    alert(cordova);
     function onDeviceReady() {
             alert ('123');
         }
