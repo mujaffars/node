@@ -59,11 +59,14 @@ $(function() {
     $("#sortable, #sortable1").sortable({
         connectWith: ".connectedSortable"
     }).disableSelection();
-
-    //document.addEventListener("deviceready", onDeviceReady, false);
-    alert('In the domready');
-    adSetter();
-    startGame();
+    
+    alert("inside dom");
+    function onDeviceReady() {
+            alert ('123');
+        }
+        
+    document.addEventListener("deviceready", onDeviceReady, true); 
+        
 });
 
 function adSetter() {
